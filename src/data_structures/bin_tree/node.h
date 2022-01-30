@@ -81,15 +81,17 @@ class Node
         T getValue() { return this->m_value; }
 
         /**
-         * @brief Compare current value with value of given node
+         * @brief Compare current children nodes and value with those of given node
          * 
-         * @param p_node 
-         * @return true 
-         * @return false 
+         * @param p_node The given node
+         * @return true If the children nodes and the value are same
+         * @return false If either left or right child or value are not the same
          */
-        bool compareValue(Node* const p_node)
+        bool compareNode(Node& p_node)
         {
-            return p_node->value == this->m_value;
+            return (p_node.getLeft() == this->getLeft() &&
+                    p_node.getRight() == this->getRight() && 
+                    p_node.getValue() == this->m_value);
         }
         
         /**
