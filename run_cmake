@@ -1,0 +1,1 @@
+ cmake -B ./build -S ./src/data_structures/bin_tree/tests/

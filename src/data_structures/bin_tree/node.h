@@ -28,12 +28,7 @@ class Node
          * @brief Construct a new Node object
          * 
          */
-        Node()
-        {
-            this->left = nullptr;
-            this->right = nullptr;
-            value = T();
-        }
+        Node() : m_left{nullptr}, m_right{nullptr}, m_value{T()} {}
 
         /**
          * @brief Construct a new Node object with given left child node and right child node parameters
@@ -41,12 +36,7 @@ class Node
          * @param p_left left node parameter
          * @param p_right right node parameter
          */
-        Node(Node* p_left, Node* p_right)
-        {
-            this->left = p_left;
-            this->right = p_right;
-            value = T();
-        }
+        Node(Node* p_left, Node* p_right) : m_left{p_left}, m_right{p_right}, m_value{T()} {}
 
         /**
          * @brief Construct a new Node object with given left child node, right child node and node value parameter
@@ -55,12 +45,7 @@ class Node
          * @param p_right right node parameter
          * @param p_value node value parameter
          */
-        Node(Node* p_left, Node* p_right, T p_value)
-        {
-            this->left = p_left;
-            this->right = p_right;
-            this->value = p_value;
-        }
+        Node(Node* p_left, Node* p_right, T p_value) : m_left{p_left}, m_right{p_right}, m_value{p_value} {}
 
         /**
          * @brief Set the value of this node
@@ -69,18 +54,31 @@ class Node
          */
         void setValue(const T& p_value)
         {
-            this->value = p_value;
+            this->m_value = p_value;
         }
+
+        /**
+         * @brief Return the left child node of this node
+         * 
+         * @return left child node of this node
+         */
+        Node<T>* getLeft() { return this->m_left; }
+
+
+        /**
+         * @brief Return the right child node of this node
+         * 
+         * @return right child node of this node
+         * 
+         */
+        Node<T>* getRight() { return this->m_right; }
 
         /**
          * @brief Get the value this node holds
          * 
          * @return T Value this node holds.
          */
-        T getValue()
-        {
-            return this->value;
-        }
+        T getValue() { return this->m_value; }
 
         /**
          * @brief Compare current value with value of given node
@@ -91,7 +89,7 @@ class Node
          */
         bool compareValue(Node* const p_node)
         {
-            return p_node->value == this->value;
+            return p_node->value == this->m_value;
         }
         
         /**
@@ -103,15 +101,13 @@ class Node
          */
         bool compareValue(const T& p_value)
         {
-            return p_value == this->value;
+            return p_value == this->m_value;
         }
 
     private:
-        Node* left;
-        Node* right;
-        T value;
+        Node* m_left;
+        Node* m_right;
+        T m_value;
 };
 
 /// \todo Look into changing raw pointer usage to smart pointers
-/// \todo Add getters and setters for child nodes
-/// \todo add member intitializer lists for constructors
