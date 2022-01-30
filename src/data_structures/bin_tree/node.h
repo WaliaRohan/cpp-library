@@ -47,6 +47,27 @@ class Node
          */
         Node(Node* p_left, Node* p_right, T p_value) : m_left{p_left}, m_right{p_right}, m_value{p_value} {}
 
+
+        /**
+         * @brief Set the left child node
+         * 
+         * @param p_node 
+         */
+        void setLeft(Node<T>& p_node) 
+        { 
+            this->m_left = &p_node;
+        };
+
+        /**
+         * @brief Set the right child node
+         * 
+         * @param p_node 
+         */
+        void setRight(Node<T>& p_node) 
+        { 
+            this->m_right = &p_node;
+        };
+
         /**
          * @brief Set the value of this node
          * 
@@ -89,8 +110,8 @@ class Node
          */
         bool compareNode(Node& p_node)
         {
-            return (p_node.getLeft() == this->getLeft() &&
-                    p_node.getRight() == this->getRight() && 
+            return (p_node.getLeft() == this->m_left &&
+                    p_node.getRight() == this->m_right && 
                     p_node.getValue() == this->m_value);
         }
         

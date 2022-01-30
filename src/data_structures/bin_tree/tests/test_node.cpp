@@ -74,9 +74,13 @@ TEST(NodeInitTest, CompareGivenNode)
     Node<int> right_child;
     Node<int> parent_node(&left_child, &right_child, 1);
 
-    Node<int> duplicate(parent_node);
+    Node<int> duplicate(&left_child, &right_child, 1);
 
     ASSERT_EQ(true, parent_node.compareNode(duplicate));
+
+    duplicate.setValue(2);
+
+    ASSERT_NE(true, parent_node.compareNode(duplicate));
 }
 
 /**
@@ -90,6 +94,23 @@ TEST(NodeInitTest, CompareGivenValue)
     Node<int> parent_node(&left_child, &right_child, 1);
 
     ASSERT_EQ(true, parent_node.compareValue(1));
+}
+
+TEST(NodeSetterTest, SetChildNodes)
+{
+    Node<int> left1;
+    Node<int> left2;
+
+    Node<int> parent_node;
+
+    parent_node.setLeft(left1);
+
+    ASSERT_EQ(true, left1.compareNode(*parent_node.getLeft()));
+    
+    parent_node.setLeft((left2));
+
+    ASSERT_EQ(true, left2.compareNode(*parent_node.getLeft()));
+
 }
 
 int main(int argc, char **argv) {
