@@ -17,7 +17,7 @@ TEST(NodeInitTest, EmptyNode) {
     ASSERT_EQ(0, empty_node.getValue());
 }
 
-TEST(checkEmptyNode, EmptyValue) { 
+TEST(NodeInitTest, EmptyValue) { 
     Node<int> left_child;
     Node<int> right_child;
     Node<int> parent_node(&left_child, &right_child);
@@ -30,7 +30,7 @@ TEST(checkEmptyNode, EmptyValue) {
     ASSERT_EQ(0, parent_node.getValue());
 }
 
-TEST(checkEmptyNode, FullyInializedNode) { 
+TEST(NodeInitTest, FullyInializedNode) { 
     Node<int> left_child;
     Node<int> right_child;
     Node<int> parent_node(&left_child, &right_child, 1);
@@ -45,6 +45,25 @@ TEST(checkEmptyNode, FullyInializedNode) {
  
 // Node value comparison tests
 
+TEST(NodeInitTest, CompareGivenNode)
+{
+    Node<int> left_child;
+    Node<int> right_child;
+    Node<int> parent_node(&left_child, &right_child, 1);
+
+    Node<int> duplicate(parent_node);
+
+    ASSERT_EQ(true, parent_node.compareNode(duplicate));
+}
+
+TEST(NodeInitTest, CompareGivenValue)
+{
+    Node<int> left_child;
+    Node<int> right_child;
+    Node<int> parent_node(&left_child, &right_child, 1);
+
+    ASSERT_EQ(true, parent_node.compareValue(1));
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
