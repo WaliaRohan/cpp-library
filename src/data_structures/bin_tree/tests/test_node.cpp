@@ -1,3 +1,14 @@
+/**
+ * @file test_node.cpp
+ * @author Rohan Walia (walia.rohan@gmail.com)
+ * @brief Test cases for checking functionality of node class
+ * @version 0.1
+ * @date 2022-01-29
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <iostream>
 
 #include "../node.h"
@@ -17,6 +28,10 @@ TEST(NodeInitTest, EmptyNode) {
     ASSERT_EQ(0, empty_node.getValue());
 }
 
+/**
+ * @brief Checks that an node value is empty when not specified through constructor
+ * 
+ */
 TEST(NodeInitTest, EmptyValue) { 
     Node<int> left_child;
     Node<int> right_child;
@@ -30,6 +45,10 @@ TEST(NodeInitTest, EmptyValue) {
     ASSERT_EQ(0, parent_node.getValue());
 }
 
+/**
+ * @brief Construct a new TEST object
+ * 
+ */
 TEST(NodeInitTest, FullyInializedNode) { 
     Node<int> left_child;
     Node<int> right_child;
@@ -45,6 +64,10 @@ TEST(NodeInitTest, FullyInializedNode) {
  
 // Node value comparison tests
 
+/**
+ * @brief Checks node comparison functionality (two nodes are equal when they have the same child nodes and values)
+ * 
+ */
 TEST(NodeInitTest, CompareGivenNode)
 {
     Node<int> left_child;
@@ -56,6 +79,10 @@ TEST(NodeInitTest, CompareGivenNode)
     ASSERT_EQ(true, parent_node.compareNode(duplicate));
 }
 
+/**
+ * @brief Checks whether a node holds a particular value
+ * 
+ */
 TEST(NodeInitTest, CompareGivenValue)
 {
     Node<int> left_child;
@@ -67,30 +94,5 @@ TEST(NodeInitTest, CompareGivenValue)
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    return RUN_ALL_TESTS(); // Macro for running all tests
 }
-
-// int main()
-// {
-//     Node<int>* leftChildNode;
-//     Node<int>* rightChildNode;
-
-//     int value = 47;
-
-//     Node<int> integerNode;
-
-//     std::cout << integerNode.getValue() << std::endl;  
-    
-//     integerNode = Node<int>(leftChildNode, rightChildNode, value);
-
-//     std::cout << integerNode.getValue() << std::endl;  
-
-//     integerNode.setValue(22);
-
-//     std::cout << integerNode.getValue() << std::endl;  
-
-//     std::cout << (integerNode.getLeft() == leftChildNode) << std::endl;
-//     std::cout << (integerNode.getRight() == rightChildNode) << std::endl;
-
-//     return 0;
-// }
