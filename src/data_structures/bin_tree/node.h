@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef NODE_H
+#define NODE_H
+
 /**
  * @brief Template for object type of node value
  * 
@@ -116,15 +119,26 @@ class Node
         }
         
         /**
-         * @brief 
+         * @brief Compare the value this node holds with the given value
          * 
-         * @param p_value 
-         * @return true 
-         * @return false 
+         * @param p_value Given value to compare to
+         * @return true If this node's value is equal to the given value
+         * @return false  If this node's value is not equal to the given value
          */
         bool compareValue(const T& p_value)
         {
             return p_value == this->m_value;
+        }
+
+        /**
+         * @brief Check if this node is a leaf node
+         * 
+         * @return true If the left and right children are null pointers
+         * @return false If either the left or the right child is not a null pointer
+         */
+        bool isLeaf()
+        {
+            return (m_left == nullptr && m_right == nullptr);
         }
 
     private:
@@ -132,5 +146,7 @@ class Node
         Node* m_right;
         T m_value;
 };
+
+#endif
 
 /// \todo Look into changing raw pointer usage to smart pointers

@@ -104,6 +104,9 @@ std::queue<cell_2d> BFS(cell_2d start, cell_2d goal, matrix_2d& grid)
     addNeighborsToQueue(start, unvisited, visited, grid);
     path.push(start);
 
+    std::cout<< "Path: ";
+    printQueue(path);
+
     std::cout << "Unvisited: ";
     printQueue(unvisited);
 
@@ -123,8 +126,14 @@ std::queue<cell_2d> BFS(cell_2d start, cell_2d goal, matrix_2d& grid)
         // add all valid unvisited neighbors of current cell to unvisited queue
         addNeighborsToQueue(current, unvisited, visited, grid);
 
+        std::cout<< "Path: ";
+        printQueue(path);
+
         std::cout << "Unvisited: ";
         printQueue(unvisited);
+
+        std::cout<< "Path: ";
+        printQueue(path);
     }
 
     if (path.front() != goal)
@@ -135,7 +144,7 @@ std::queue<cell_2d> BFS(cell_2d start, cell_2d goal, matrix_2d& grid)
 
 int main()
 {
-    matrix_2d grid = {{1, 1, 0},
+    matrix_2d grid = {{1, 1, 1},
                     {1, 0, 0},
                     {1, 1, 0}};
 
@@ -146,8 +155,8 @@ int main()
 
     std::queue<cell_2d> path = BFS(start, goal, grid);
 
-    std::cout<< "Path: ";
-    printQueue(path);
+    // std::cout<< "Path: ";
+    // printQueue(path);
 
     return 0;
 }
